@@ -1,0 +1,121 @@
+:root {
+  --custom_red: #bd3c33;
+  --custom_yellow: #f5ce22;
+  --custom_green: #1fa162;
+  --custom_white: #f3f0d9;
+  --custom_black: #0e0a0f;
+  --custom_blue: #231f54;
+
+}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+body {
+  height: 100vh;
+  max-width: 100vw;
+  font-family: itc-avant-garde-gothic-pro, sans-serif;
+  font-weight: 100;
+  background-color: var(--custom_black);
+}
+main {
+  height: 100%;
+  padding: 1rem;
+  color: var(--custom_white);
+}
+ul {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.125em;
+}
+p {
+  line-height: 1.75;
+  max-width: 65ch;
+}
+h2 {
+  font-weight: 100;
+  width: fit-content;
+  display: grid;
+  border-bottom: solid 1px var(--custom_white);
+}
+/* side content generalt */
+#contentWrapper {
+  outline: solid 1px var(--custom_white);
+  height: 100%;
+  padding: 1rem;
+  overflow: scroll;
+  display: grid;
+  gap: 1.5rem;
+}
+section:not(#frontPageWrapper, #contentWrapper) {
+  padding-block: 2rem;
+}
+/* side content generalt */
+/* scroll animation */
+.hidden {
+  opacity: 0;
+  filter: blur(2px);
+  transform: scale(0.95);
+  transition: all 0.5s ease-in 0.1s;
+}
+.show {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0px);
+}
+/* scroll animation */
+/* side content forside */
+#frontPageWrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  height: calc(100dvh - 4rem);
+}
+#frontPageWrapper > .content {
+  grid-column: 2/4;
+  display: flex;
+  justify-content: right;
+}
+#frontPageWrapper :where(h2, nav) {
+  grid-column: 1/3;
+}
+/* side content forside */
+/* side content om mig */
+#omMigWrapper {
+  display: grid;
+  gap: 2rem;
+}
+/* side content om mig */
+/* side content kompetencer */
+#kompetencerWrapper {
+  display: grid;
+  gap: 2rem;
+}
+#kompetencerWrapper .content {
+  display: grid;
+  gap: 2rem;
+}
+#kompetencerWrapper li::marker {
+  content: " - ";
+}
+/* side content kompetencer */
+/* side content eksempler */
+#eksemplerWrapper {
+  display: grid;
+  gap: 2rem;
+}
+/* side content eksempler */
+/* side content kontakt */
+#kontaktWrapper {
+  display: grid;
+  gap: 2rem;
+}
+/* side content kontakt */
