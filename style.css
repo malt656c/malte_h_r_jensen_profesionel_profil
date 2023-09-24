@@ -12,6 +12,10 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+::selection{
+  background-color: var(--custom_yellow);
+  color: var(--custom_black);
+}
 body {
   height: 100vh;
   max-width: 100vw;
@@ -20,6 +24,7 @@ body {
   background-color: var(--custom_black);
   background-image: radial-gradient(hsl(288, 20%, 10%), var(--custom_black));
 }
+
 main {
   height: 100%;
   padding: 1rem;
@@ -33,7 +38,12 @@ ul {
 a {
   color: inherit;
   text-decoration: none;
-  font-size: 1.125em;
+  font-size: 1em;
+  transition: all 0.2s ease-in-out;
+}
+a:hover{
+  font-style: normal;
+  transform: scale(1.05);
 }
 p {
   line-height: 1.75;
@@ -45,6 +55,13 @@ h2 {
   display: grid;
   border-bottom: solid 1px var(--custom_white);
 }
+h3 {
+  font-weight: 100;
+  width: fit-content;
+  display: grid;
+  border-bottom: solid 1px var(--custom_white);
+  font-size: 1em;
+}
 /* side content generalt */
 #contentWrapper {
   outline: solid 1px var(--custom_white);
@@ -54,6 +71,9 @@ h2 {
   display: grid;
   gap: 1.5rem;
   background-color: var(--custom_black);
+}
+#contentWrapper::-webkit-scrollbar {
+  display: none;
 }
 section:not(#frontPageWrapper, #contentWrapper) {
   padding-block: 2rem;
@@ -94,6 +114,11 @@ section:not(#frontPageWrapper, #contentWrapper) {
   display: grid;
   gap: 2rem;
 }
+#omMigWrapper img{
+  padding: 2rem;
+width: clamp(125px, 100%, 350px);
+margin-inline: auto;
+}
 /* side content om mig */
 /* side content kompetencer */
 #kompetencerWrapper {
@@ -104,21 +129,51 @@ section:not(#frontPageWrapper, #contentWrapper) {
   display: grid;
   gap: 2rem;
 }
+#kompetencerWrapper ul {
+outline: 1px solid var(--custom_white);
+padding: 1.5rem;
+}
 #kompetencerWrapper li::marker {
   content: " - ";
 }
 /* side content kompetencer */
 /* side content eksempler */
-#eksemplerWrapper {
+/* #eksemplerWrapper {
   display: grid;
   gap: 2rem;
-}
+} */
 /* side content eksempler */
 /* side content kontakt */
 #kontaktWrapper {
   display: grid;
   gap: 2rem;
 }
+#kontaktWrapper li {
+display: grid;
+grid-template-columns: auto 1fr;
+place-items: center;
+gap: 1rem;
+max-width: fit-content;
+}
+#kontaktWrapper li::before {
+  content: " ";
+  background-size: contain;
+  width: 1.5rem;
+aspect-ratio: 1;
+}
+#kontaktWrapper li:nth-of-type(1)::before {
+background-image: url(assets/phone_icon.svg);
+}
+#kontaktWrapper li:nth-of-type(2)::before {
+  background-image: url(assets/contact_icon.svg);
+}
+#kontaktWrapper li:nth-of-type(3)::before {
+  background-image: url(assets/linkedin_icon.svg);
+}
+#kontaktWrapper li:nth-of-type(4)::before {
+  background-image: url(assets/github_icon.svg);
+}
+
 /* side content kontakt */
 
 @media (min-width: 800px) {
@@ -126,6 +181,9 @@ section:not(#frontPageWrapper, #contentWrapper) {
     padding: 4rem;
     display: grid;
     place-content: center;
+  }
+  a{
+    font-size: 1.125em;
   }
   #contentWrapper {
     padding: 2rem;
@@ -138,10 +196,24 @@ section:not(#frontPageWrapper, #contentWrapper) {
   #frontPageWrapper .content p {
     max-width: 200px;
   }
+  #omMigWrapper{
+    grid-template-columns: 2fr 3fr;
+
+  }
+  #omMigWrapper :where(h2, img){
+grid-column: 1/2;
+  }
+  #omMigWrapper :where(p){
+    grid-column: 2/3;
+      }
   #kompetencerWrapper {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 3fr 2fr;
   }
   #kompetencerWrapper :where(h2, .content) {
     grid-column: 1/2;
+  }
+  #kompetencerWrapper :where(ul) {
+    grid-column: 2/3;
+    grid-row: 1/3;
   }
 }
